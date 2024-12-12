@@ -1,0 +1,17 @@
+IMAGE STORAGE 
+    - they will be stored seperately on third party apps 
+    - first they are stored in server to prevent refresh loss
+
+.gitkeep 
+    - is used to add a folder  
+
+touch 
+    - touch is used to create apps 
+
+nodemon 
+    - used to automatically restart the server
+    - it is to be installed as a dev dependency 
+        - i.e not to be pushed to the user 
+        - which is done by installing it like "npm install"
+ 
+ 
