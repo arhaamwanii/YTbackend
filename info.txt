@@ -14,4 +14,45 @@ nodemon
         - i.e not to be pushed to the user 
         - which is done by installing it like "npm install"
  
- 
+to enter mongoDB atlas 
+    - two things are required 
+    
+    - YOUR IP ADRESS SHOULD BE ALLOWED
+    - YOU SHOULD HAVE CORRECT ID.PASSWORD
+
+    - proffesionlly the only ip adress is allowed where the backend code is running 
+    - so that it can access the data base
+
+UTILITES 
+    - utils
+    - this is the type of functionlaity that will be used here and there
+        - e.g image upload
+
+dot.env 
+    - used to use the env variables in dev environment 
+    - it uses require syntax by default 
+
+DB CONNECTION
+    - it can be done in two way  
+        - doing it directly via a index. file 
+            - 
+        - doing it via a db folder file
+            - cleaner
+    
+    - MONGOOSE - connects with database
+    - mongoose.connect
+    -> problem will come when connecting with db 
+        - try catch -- orr if else
+        - promises
+    -> data base is always in other conenent 
+        - async await 
+        - it takes time to conect 
+
+    - not having ; semicolon at the end of the code previous to if-else can cause problems 
+        - so it is better to do it at the start of your code
+    
+
+
+
+
+
