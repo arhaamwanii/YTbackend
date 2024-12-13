@@ -33,6 +33,7 @@ dot.env
     - it uses require syntax by default 
 
 DB CONNECTION
+
     - it can be done in two way  
         - doing it directly via a index. file 
             - 
@@ -51,7 +52,52 @@ DB CONNECTION
     - not having ; semicolon at the end of the code previous to if-else can cause problems 
         - so it is better to do it at the start of your code
     
+            import mongoose from "mongoose";
+            import { DB_NAME } from "../constants.js";
 
+            const connectDB = async () => {
+                try {
+                    const connectionInstance = await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
+                    console.log(connectionInstance)
+                    console.log(`\n MongoDB connected !! DB HOST : ${connectionInstance.connection.host}`)
+                } catch(error){
+                    console.log("MONGODB connection ERROR : " , error)
+                    process.exit(1)
+                }
+            }
+
+            export default connectDB
+
+    - connecting to a db is pretty simple by using mongoose.connect 
+    - in an async function 
+    - try catch to make sure error are catched 
+    - logging errors 
+    - env variables - they can be imported in the main file and that would do the job for every file
+    - gitignore , env use(dot.env)
+
+- cookie parser 
+    - allows us to cread cookies on users browser
+    - secure cookies can be made and stored on user browser
+
+CORS 
+    - it is used to specify access and see which url is given access to make the calls to the backend
+    - it is a middle ware
+    - that checks for the the right incomming domain 
+
+MIDDLE WARES 
+    - these are code funtions that are executed between req and res
+    - req
+        - authentication 
+        - running fucction 
+    - res
+
+4 ELEMENTS
+    - (err , req , res , next )
+
+    - req = what came in 
+    - res = what respose we are going to send
+    - next = flag - to make pass from one middleware to another
+    - used to throw and catch errors 
 
 
 
