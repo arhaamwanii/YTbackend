@@ -1,4 +1,6 @@
 import mongoose , {Schema} from "mongoose" ;
+import jwt from "jsonwebtoken" ;
+import bcrypt from "bcrypt" ;
 
  const userSchema  = new Schema(
     {
@@ -45,6 +47,57 @@ import mongoose , {Schema} from "mongoose" ;
         }
 } , { timestamps : true }
 )
+
+userSchema.pre("save" , async function (next) {
+    if(!this.isModified("password")) return next() ;
+
+    this.password = bcrypt.hash(this.password , 10 )
+    next()
+    
+} )
+// like this it will keep on hashing everytime a user changes something in the userSchema 
+// only change - new pass , chnange pass
+
+
+// CUSTOM METHOD DESIGN 
+    // we wil call this function when we are going to have to compare the passwords 
+userSchema.method.isPasswordCorrect = async function(password){
+    // becrypt also checks passwords
+    return await bcrypt.compare(password , this.password)
+    // takes in 0 string passwrod 1 encrypted password to compare
+}
+
+// JWT - is a bearer token 
+// whoever has this this token it is going to give them data 
+
+
+userSchema.methods.generateAccessToken = function(){
+    return jwt.sign(
+        {
+            _id :  this._id ,
+            email : this.email , 
+            username : this.username ,
+            fullname : this.fullname
+        } , 
+        process.env.ACCESS_TOKEN_SECRET ,
+        {
+            expiresIn : process.env.ACCESS_TOKEN_EXPIRY
+        }
+    )
+}
+
+userSchema.methods.generateRefreshToken = function(){
+    return jwt.sign(
+        {
+            _id :  this._id 
+        } , 
+        process.env.REFRESH_TOKEN_SECRET ,
+        {
+            expiresIn : process.env.REFRESH_TOKEN_EXPIRY
+        }
+    )
+}
+
 
  export  const User = mongoose.model("User" , userSchema)
 
