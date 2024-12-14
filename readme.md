@@ -4,4 +4,6 @@ cors
 cookie parser
 dot env
 bcrypt/bcrypt.js : helps you to hash and compare your password 
-jsonwebtoken
+jsonwebtoken 
+express file upload
+multer

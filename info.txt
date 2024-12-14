@@ -112,3 +112,99 @@ MODELS
 PRE HOOK -- middle ware
     - just before a data is saved 
     - these hooks are executed
+
+FILE UPLOAD
+    - it is majority backend thing 
+    - most of file handling is not done on our own server 
+    - uplaoded on third party service
+
+    - not every api endpoint has file upload
+    - seperate utility 
+        - reusable 
+        - so that we can use it again 
+
+    - cloudnary
+        - it is a sdk : software development kit 
+    - multer 
+        - we will take the file from the user 
+        - keep it on the server temporarly
+    - then we will take this from the local storage and uplaod it to the server 
+
+
+HTTP CRASH COURSE
+http - noraml data
+https - encrypted data 
+
+URI - unified resourse identifier 
+    - URN : unified resourse name - gives the resourse a name : which generaly does not change
+    - URL : unified resourse locator - gives us the location of the resourse on internet
+
+HTTPS HEADER
+
+    - meta data : data about the data 
+    - headers are in both req or res
+        - where req is made from sends a dfferent header : postman , browser ..
+        - where res is made frmo sends a different response; your server : 404 not found , ..
+    - headers do a lot of things 
+        - caching 
+        - authentication
+            - cookies 
+        - state management
+            - what is the state of the user 
+    - x-pfix which is now depricated
+
+    - REQUEST HEADERS 
+        - from client 
+    - RESPONSE HEADERS 
+        - from servers
+        - thee is a convetion
+        - can be done any way 
+    - REPRESENTATION HEADERS
+        - data about compression algorithm 
+    - PAYLOAD HEADERS 
+        - data
+            - id and so on
+    - SECURITY 
+
+    MOST COMMON HEADERS
+
+    accept : application/json
+        -
+    user  : agent  
+        - where the request has came from : post man 
+        - safari chrome , mobile browser so on
+    authorization 
+        - bearer _______________ 
+        - used to send atuorization tokens 
+    cookies 
+        - object
+        - information about stuff 
+    cache control 
+
+    CORS HEADERS 
+    - where are we allowing access from 
+    - what methods are allowed . GET. PUSH...
+
+    HTTP METHODS 
+    - tells what methods am i perfroming 
+    - we have to make them
+
+    - GET : retirive a resourse
+    - POST : interacts with a resourse(mostly add)
+    - PUT : replace a resourse
+    - DELETE
+    - PATCH(sometimes)
+
+    - HEAD : no message body 
+    - OPTONS : what are available
+    - TRACE : loopback test - show proxies    
+
+HTTP STATUS CODE
+    - 1xx : Informational : passing info to user 
+    - 2xx : Success message 
+    - 3xx : Redirection (temp + perminent)
+    - 4xx : clietn error(no internet + no pass + auth token wrong + wrong image size ///)
+    - 5xx : server errors (api error + excess trafic and so on)
+    
+
+    200 : OK 
