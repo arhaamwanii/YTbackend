@@ -207,4 +207,13 @@ HTTP STATUS CODE
     - 5xx : server errors (api error + excess trafic and so on)
     
 
-    200 : OK 
+    200 : OK
+
+REGISTRATION OF THE USER
+    - there are a lot steps
+        - breaking down big steps into smaller ones
+    - 
+
+index.file is mainly userd to conifgure listen 
+
+ROUTES
