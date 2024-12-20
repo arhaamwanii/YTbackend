@@ -14,14 +14,14 @@ import bcrypt from "bcrypt" ;
         } ,
         email : {
             type : String , 
-            required : ture , 
+            required : true , 
             unique : true , 
             lowercase : true , 
             trim : true , 
         } ,
-        fullname : {
+        fullName : {
             type : String , 
-            required : ture , 
+            required : true , 
             trim : true , 
             index : true
         } ,
@@ -34,7 +34,7 @@ import bcrypt from "bcrypt" ;
         },
         watchHistory : [
             {
-                type : Schema.Type.ObjectId ,
+                type : Schema.Types.ObjectId ,
                 ref : "Video"
             }
         ] ,
@@ -51,14 +51,17 @@ import bcrypt from "bcrypt" ;
 // PRE : means that run this funtion when before you do something 
     // in this case that is "save"
     // before you save somehting run this function 
+
+
 userSchema.pre("save" , async function (next) {
     if(!this.isModified("password")) return next() ;
     // this will change/set the password to the new encrytped version of the password
-    this.password = bcrypt.hash(this.password , 10 )
+    this.password = await bcrypt.hash(this.password , 10 )
     // makes it go to the next middleware i.e exit this middle ware
     next()
     
 } )
+
 // like this it will keep on hashing everytime a user changes something in the userSchema 
 // only change - new pass , chnange pass
 

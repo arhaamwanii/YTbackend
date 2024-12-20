@@ -7,6 +7,8 @@ class ApiResponse{
     }
 }
 
+export {ApiResponse}
+
 // api servers have status code
 
 // 100-199 : informational Response

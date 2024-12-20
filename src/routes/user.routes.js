@@ -1,10 +1,25 @@
 import { Router } from "express";
 import { registerUser } from "../controllers/user.controller.js";
+import { upload } from "../middlewares/multer.middleware.js";
 
 const router = Router()
 
-router.route("/register" ).post(registerUser)
-// router.route("/register" ).post(registerUser)
+router.route("/register" ).post(
+    upload.fields([
+        {
+            name : "avatar" , 
+            maxCount : 1
+        }, 
+        {
+            name : "coverImage" ,
+            maxCount : 1
+        }
+    ]), 
+    registerUser
+)
+// putting in middleware i.e on the way out meet me first 
+    // we are going to put the multer middle ware here so that it will help with file upload 
+    // what method is going to be executed put in the middle before that
 
 
 export default router
